@@ -12,9 +12,12 @@ class NotificationConsumer(WebsocketConsumer):
             # Reject the connection
             self.close()
         else:
-            # print(self.scope["user"])   # Can access logged in user details by using self.scope.user, Can only be used if AuthMiddlewareStack is used in the routing.py
+            self.group_system_name = "notification_system"
+            async_to_sync(self.channel_layer.group_add)(self.group_system_name, self.channel_name)
+
             self.group_name = str(self.scope["user"].pk)  # Setting the group name as the pk of the user primary key as it is unique to each user. The group name is used to communicate with the user.
             async_to_sync(self.channel_layer.group_add)(self.group_name, self.channel_name)
+            
             self.accept()
 
     # Function to disconnet the Socket
