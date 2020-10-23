@@ -124,22 +124,22 @@ STATIC_URL = '/static/'
 # Django Channels
 # Adding Django Channel Layers
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
-        },
-    },
-}
-
 # CHANNEL_LAYERS = {
 #     "default": {
-#         "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
 #         "CONFIG": {
-#             "host": "amqp://guest:guest@127.0.0.1/",
+#             "hosts": [("127.0.0.1", 6379)],
 #         },
 #     },
 # }
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+        "CONFIG": {
+            "host": "amqp://admin:StrongPassword@139.180.205.6/",
+        },
+    },
+}
 
 # End Django Channels
