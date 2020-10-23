@@ -137,7 +137,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
         "CONFIG": {
-            "host": "amqp://admin:StrongPassword@1270.0.0.1/",
+            "host": "amqp://test:test@139.180.205.6/",
         },
     },
 }
