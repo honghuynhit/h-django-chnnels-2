@@ -120,26 +120,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 # Django Channels
 # Adding Django Channel Layers
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         },
-#     },
-# }
-
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "host": "amqp://test:test@139.180.205.6/",
+            "hosts": ["redis://127.0.0.1:6379/0"],
         },
     },
 }
+
+#CHANNEL_LAYERS = {
+#    "default": {
+#        "BACKEND": "channels_rabbitmq.core.RabbitmqChannelLayer",
+#        "CONFIG": {
+#            "host": "amqp://test:test@139.180.205.6/",
+#        },
+#    },
+#}
 
 # End Django Channels
